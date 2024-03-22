@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <section className="header flex items-center justify-between text-[11px] border border-b-black py-5">
+    <section className="header flex items-center justify-between text-[11px] border-b border-black py-5">
       <div className="flex gap-10">
         <Image src={corsea_icon} alt="" />
         <div className="flex items-center gap-10">
