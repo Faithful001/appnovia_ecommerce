@@ -7,8 +7,8 @@ import wishlist_icon from "../../../public/assets/icons/wishlist_icon.svg";
 
 const Products = () => {
   return (
-    <section className="products mx-5 flex flex-col items-center justify-center my-20">
-      <p className="text-[29px] text-center max-w-[90%] mb-20">
+    <section className="products mx-5 flex flex-col items-center justify-center my-20 md:px-16 px-8">
+      <p className="md:text-[29px] text-2xl text-center lg:max-w-[90%] mb-20">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud.
