@@ -14,6 +14,8 @@ import Searchbar from "../ui/Searchbar/Searchbar";
 import { useCart } from "@/contexts/CartContext";
 import { motion } from "framer-motion";
 import { useWishlist } from "@/contexts/WishlistContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   const [searchbarIsActive, setSearchbarIsActive] = useState<boolean>(false);
@@ -43,6 +45,7 @@ const Header = () => {
   }, []);
   return (
     <section className="header flex items-center justify-between text-[11px] border-b lg:border-black border-white py-5 ">
+      <ToastContainer />
       <div className="flex gap-10">
         <Image
           src={corsea_icon}

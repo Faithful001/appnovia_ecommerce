@@ -6,8 +6,8 @@ import { ProductsDataInterface } from "@/interfaces/data.interface";
 import Image from "next/image";
 import wishlist_icon from "../../../public/assets/icons/wishlist_icon.svg";
 import eye_open_icon from "../../../public/assets/icons/eye_open_icon.svg";
-import { useEffect } from "react";
 import { LocalStorage } from "@/utils/LocalStorage/localStorage.util";
+import { ToastContainer, toast } from "react-toastify";
 
 const Wishlist = () => {
   const { wishlist, setWishlist } = useWishlist();
@@ -15,6 +15,7 @@ const Wishlist = () => {
   const wishlistArray = Array.from(wishlist);
 
   function removeFromWishlist(product: ProductsDataInterface) {
+    toast("Item removed from wishlist");
     const updatedFavorites = new Set(
       Array.from(wishlist).filter((favorite) => favorite !== product)
     );
@@ -25,6 +26,7 @@ const Wishlist = () => {
 
   return (
     <div className="wishlist">
+      <ToastContainer />
       <NavigateButton location={-1} />
       <div className="flex flex-col items-center justify-center gap-5">
         <h1 className="text-center text-2xl font-bold">Your wishlist items</h1>

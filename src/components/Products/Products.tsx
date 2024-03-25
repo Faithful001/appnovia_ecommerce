@@ -8,6 +8,8 @@ import wishlist_icon from "../../../public/assets/icons/wishlist_icon.svg";
 import { LocalStorage } from "@/utils/LocalStorage/localStorage.util";
 import { useCart } from "@/contexts/CartContext";
 import { useWishlist } from "@/contexts/WishlistContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Products = () => {
   const { products, setProducts } = useCart();
@@ -16,6 +18,7 @@ const Products = () => {
   console.log(products);
 
   function addToCart(product: ProductsDataInterface) {
+    toast("Item added to cart");
     setProducts((prevProducts) => {
       const updatedProducts = new Set([...prevProducts, product]);
       LocalStorage.set("cart_products", Array.from(updatedProducts));
@@ -24,6 +27,7 @@ const Products = () => {
   }
 
   function addToWishlist(product: ProductsDataInterface) {
+    toast("Item added to wishlist");
     setWishlist((prevWishlist) => {
       const updatedProducts = new Set([...prevWishlist, product]);
       LocalStorage.set("wishlist_products", Array.from(updatedProducts));

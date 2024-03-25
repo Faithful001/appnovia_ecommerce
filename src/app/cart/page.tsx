@@ -8,6 +8,7 @@ import eye_open_icon from "../../../public/assets/icons/eye_open_icon.svg";
 import { LocalStorage } from "@/utils/LocalStorage/localStorage.util";
 import NavigateButton from "@/components/ui/Button/NavigateButton";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const Cart = () => {
   const { products, setProducts } = useCart();
@@ -22,6 +23,7 @@ const Cart = () => {
   }, [productsArray]);
 
   function removeFromCart(product: ProductsDataInterface) {
+    toast("Item removed from cart");
     const updatedFavorites = new Set(
       Array.from(products).filter((favorite) => favorite !== product)
     );
@@ -32,6 +34,8 @@ const Cart = () => {
 
   return (
     <div className="cart md:px-16 px-8 py-5">
+      <ToastContainer />
+
       <NavigateButton location={-1} />
       <div className="flex flex-col items-center justify-center gap-5">
         <h1 className="text-center text-2xl font-bold">Your cart items</h1>
@@ -98,12 +102,15 @@ const Cart = () => {
             <h1 className="text-center">Your cart seems empty :) </h1>
           )}
         </div>
+        {productsArray.length > 0 && (
+          <>
+            <p className="text-left">Total: ${totalPrice}</p>
 
-        <p className="text-left">Total: ${totalPrice}</p>
-
-        <button className="rounded-md bg-black text-white px-8 py-2">
-          Checkout
-        </button>
+            <button className="rounded-md bg-black text-white px-8 py-2">
+              Checkout
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
