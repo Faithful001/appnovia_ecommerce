@@ -1,5 +1,4 @@
 import Artists from "@/components/Artists/Artists";
-import Flow from "@/components/Flow/Flow";
 import Footer from "@/components/Footer/Footer";
 import GenderCollection from "@/components/GenderCollection/GenderCollection";
 import HeaderHero from "@/components/HeaderHero/HeaderHero";
