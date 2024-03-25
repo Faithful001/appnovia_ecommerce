@@ -3,7 +3,7 @@ import Image from "next/image";
 const Artists = () => {
   return (
     <>
-      <div className="flex flex-col pl-5 pr-5 py-7 gap-24 lg:flex-row md:items-center md:justify-between md:pr-5 md:pl-5 md:py-20 lg:pr-[90px] lg:pl-[118px]">
+      <div className="flex flex-col  md:items-start items-center justify-between pl-5 pr-5 py-7 gap-24 lg:flex-row md:pr-5 md:pl-5 md:py-20 lg:pr-[90px] lg:pl-[118px]">
         <div className="flex flex-col md:flex-row gap-5 ">
           <Image
             src={"/assets/artistone.svg"}

@@ -16,6 +16,9 @@ import { motion } from "framer-motion";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { CgMenuRightAlt } from "react-icons/cg";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { Link as LinkScroll, ScrollLink } from "react-scroll";
 
 const Header = () => {
   const [searchbarIsActive, setSearchbarIsActive] = useState<boolean>(false);
@@ -44,9 +47,9 @@ const Header = () => {
     };
   }, []);
   return (
-    <section className="header flex items-center justify-between text-[11px] border-b lg:border-black border-white py-5 ">
+    <section className="header flex items-center justify-between text-[11px] border-b lg:border-black border-white py-5 w-full">
       <ToastContainer />
-      <div className="flex gap-10">
+      <div className="flex w-full gap-10">
         <Image
           src={corsea_icon}
           alt=""
@@ -56,18 +59,21 @@ const Header = () => {
         />
         <div className="md:flex hidden items-center gap-10">
           {navbarData.map((data: NavbarDataInterface, index: number) => (
-            <Link
-              href={data.link}
+            <LinkScroll
+              to={data.link}
+              activeClass="active"
+              smooth={true}
+              spy={true}
               key={index}
-              className="font-semibold lg:text-black text-white "
+              className="cursor-pointer"
             >
               {data.name}
-            </Link>
+            </LinkScroll>
           ))}
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-3">
+      <div className="flex items-center justify-center gap-5">
         {searchbarIsActive && (
           <motion.div
             initial={{ opacity: 0, x: 10 }}
@@ -93,25 +99,28 @@ const Header = () => {
             menuIsOpen ? "left-0" : "-left-full"
           }`}
         >
-          <span
-            className="cursor-pointer md:hidden block absolute top-5 right-10"
+          <AiOutlineCloseCircle
+            className="cursor-pointer md:hidden block absolute top-5 right-10 h-8 w-8"
             onClick={() => setMenuIsOpen(false)}
-          >
-            close
-          </span>
+          />
+
           <div className="md:hidden flex flex-col items-center gap-10 ">
             {navbarData.map((data: NavbarDataInterface, index: number) => (
-              <Link
-                href={data.link}
+              <LinkScroll
+                to={data.link}
+                activeClass="active"
+                smooth={true}
+                spy={true}
                 key={index}
-                className="font-semibold text-black "
+                className="cursor-pointer"
+                onClick={() => setMenuIsOpen(false)}
               >
                 {data.name}
-              </Link>
+              </LinkScroll>
             ))}
           </div>
           <div
-            className={`md:flex md:flex-row flex flex-col items-center justify-center md:gap-3 gap-10 ${
+            className={`md:flex md:flex-row flex flex-col items-center justify-center md:gap-5 gap-10 ${
               menuIsOpen ? "invert-0" : "lg:invert-0 invert"
             }`}
           >
@@ -135,12 +144,11 @@ const Header = () => {
             <Image src={profile_icon} alt="" className="cursor-pointer" />
           </div>
         </div>
-        <span
-          className="material-symbols-outlined md:hidden block cursor-pointer lg:invert-0 invert"
+        <CgMenuRightAlt
+          className="cursor-pointer md:hidden block h-8 w-8 text-white"
+          // height={500}
           onClick={() => setMenuIsOpen(true)}
-        >
-          menu
-        </span>
+        />
       </div>
     </section>
   );

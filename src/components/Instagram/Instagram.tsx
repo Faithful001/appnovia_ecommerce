@@ -72,7 +72,7 @@ const Instagram = () => {
             width={14}
             height={15}
           />
-          <h1 className="noto-sans text-[13px] uppercase font-semibold">
+          <h1 className="noto-sans text-[13px] min-w-fit uppercase font-semibold">
             security checkout
           </h1>
         </div>
@@ -84,7 +84,7 @@ const Instagram = () => {
             width={30}
             height={5}
           />
-          <h1 className="noto-sans text-[13px] uppercase font-semibold">
+          <h1 className="noto-sans text-[13px] min-w-fit uppercase font-semibold">
             order tracking
           </h1>
         </div>

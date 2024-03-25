@@ -12,10 +12,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Products = () => {
-  const { products, setProducts } = useCart();
-  const { wishlist, setWishlist } = useWishlist();
-
-  console.log(products);
+  const { setProducts } = useCart();
+  const { setWishlist } = useWishlist();
 
   function addToCart(product: ProductsDataInterface) {
     toast("Item added to cart");
@@ -35,7 +33,10 @@ const Products = () => {
     });
   }
   return (
-    <section className="products mx-5 flex flex-col items-center justify-center my-20 md:px-16 px-8">
+    <section
+      className="products mx-5 flex flex-col items-center justify-center my-20 md:px-16 px-8"
+      id="shop"
+    >
       <p className="md:text-[29px] text-2xl text-center lg:max-w-[90%] mb-20">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
