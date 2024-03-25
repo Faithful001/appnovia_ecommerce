@@ -29,4 +29,6 @@ const Searchbar = forwardRef<HTMLDivElement>(({}, ref: Ref<HTMLDivElement>) => {
   );
 });
 
+Searchbar.displayName = "Searchbar";
+
 export default Searchbar;
