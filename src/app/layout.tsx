@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import { CartContextProvider } from "@/contexts/CartContext";
+import { WishlistContextProvider } from "@/contexts/WishlistContext";
 
 const noto_sans = Noto_Sans({
   subsets: ["latin"],
@@ -19,7 +21,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={noto_sans.className}>{children}</body>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
+      </head>
+
+      <body className={noto_sans.className}>
+        <CartContextProvider>
+          <WishlistContextProvider>{children}</WishlistContextProvider>
+        </CartContextProvider>
+      </body>
     </html>
   );
 }

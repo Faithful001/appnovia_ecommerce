@@ -1,11 +1,35 @@
+"use client";
 import { productsData } from "@/data/productsData";
 import { ProductsDataInterface } from "@/interfaces/data.interface";
 import Image from "next/image";
 import cart_icon from "../../../public/assets/icons/cart_icon.svg";
 import eye_open_icon from "../../../public/assets/icons/eye_open_icon.svg";
 import wishlist_icon from "../../../public/assets/icons/wishlist_icon.svg";
+import { LocalStorage } from "@/utils/LocalStorage/localStorage.util";
+import { useCart } from "@/contexts/CartContext";
+import { useWishlist } from "@/contexts/WishlistContext";
 
 const Products = () => {
+  const { products, setProducts } = useCart();
+  const { wishlist, setWishlist } = useWishlist();
+
+  console.log(products);
+
+  function addToCart(product: ProductsDataInterface) {
+    setProducts((prevProducts) => {
+      const updatedProducts = new Set([...prevProducts, product]);
+      LocalStorage.set("cart_products", Array.from(updatedProducts));
+      return updatedProducts;
+    });
+  }
+
+  function addToWishlist(product: ProductsDataInterface) {
+    setWishlist((prevWishlist) => {
+      const updatedProducts = new Set([...prevWishlist, product]);
+      LocalStorage.set("wishlist_products", Array.from(updatedProducts));
+      return updatedProducts;
+    });
+  }
   return (
     <section className="products mx-5 flex flex-col items-center justify-center my-20 md:px-16 px-8">
       <p className="md:text-[29px] text-2xl text-center lg:max-w-[90%] mb-20">
@@ -40,7 +64,12 @@ const Products = () => {
                 </p>
               )}
               <div className="flex flex-col items-center gap-3 absolute top-4 right-4">
-                <Image src={wishlist_icon} alt="" className="cursor-pointer" />
+                <Image
+                  src={wishlist_icon}
+                  alt=""
+                  className="cursor-pointer"
+                  onClick={() => addToWishlist(data)}
+                />
                 <Image src={eye_open_icon} alt="" className="cursor-pointer" />
               </div>
 
@@ -51,7 +80,10 @@ const Products = () => {
                   </p>
                   <p className="text-sm -mt-1">${data.price}</p>
                 </span>
-                <span className="border-l border-black px-5 h-12 flex items-center justify-center group hover:bg-black cursor-pointer">
+                <span
+                  className="border-l border-black px-5 h-12 flex items-center justify-center group hover:bg-black cursor-pointer"
+                  onClick={() => addToCart(data)}
+                >
                   <Image
                     src={cart_icon}
                     alt=""

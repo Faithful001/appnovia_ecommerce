@@ -5,7 +5,7 @@ import "./Hero.css";
 
 const Hero = () => {
   return (
-    <section className="hero h-screen flex flex-col justify-end pb-10 border-b border-black items-start gap-20">
+    <section className="hero h-screen flex flex-col justify-end pb-10 border-b lg:border-black border-white items-start gap-20">
       <div className="flex w-full items-center justify-between lg:invert-0 invert">
         <Image src={left_arrow_icon} alt="" className="cursor-pointer" />
         <Image src={right_arrow_icon} alt="" className="cursor-pointer" />

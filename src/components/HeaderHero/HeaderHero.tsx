@@ -5,13 +5,12 @@ import background_img from "../../../public/assets/bg/hero_bg.svg";
 
 const HeaderHero = () => {
   return (
-    <div className="header-hero flex flex-col h-screen md:px-16 px-8 pb-10">
+    <div className="header-hero flex flex-col h-screen md:px-16 px-8 pb-10 relative">
       {/* Background Image */}
-      <div className="inset-0 overflow-hidden -z-10">
+      <div className="absolute inset-0 overflow-hidden -z-10">
         <Image
           src={background_img}
-          layout="fill"
-          objectFit="cover"
+          className="w-full h-full object-cover"
           alt="Background"
         />
       </div>

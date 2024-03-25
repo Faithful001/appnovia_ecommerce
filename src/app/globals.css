@@ -8,3 +8,25 @@
   background-repeat: no-repeat;
   background-position: center;
 } */
+
+.Img {
+  max-height: 560.53px;
+  gap: 0px;
+  opacity: 0px;
+}
+.Img:hover {
+  max-height: 100%;
+}
+
+.animate-slide {
+  animation: marquee-animation 30s linear infinite;
+}
+@keyframes marquee-animation {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}

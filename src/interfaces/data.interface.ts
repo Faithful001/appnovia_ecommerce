@@ -11,3 +11,10 @@ export interface ProductsDataInterface {
   sold: boolean;
   price: number;
 }
+
+export interface FlowDataInterface {
+  imageSrc: string;
+  text: string;
+  text2: string;
+  link: string;
+}
